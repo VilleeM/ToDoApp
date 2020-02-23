@@ -1,0 +1,51 @@
+extends layout.pug
+
+block content
+    div.container
+        div.row
+            div.col-12
+                h2.jumbotron.bg-info To Do App
+                    p.lead Welcome to the ToDoApp!
+                    p.lead Here you can write and view ToDos
+                    button.btn.btn-danger(type="button" onClick="logout()") Log Out
+
+            div.col-12
+                h1 Todos
+                div.form-group
+                    textarea.form-control(id="todo-content", cols="30", rows="3" placeholder="Buy Milk, for example...")
+                button.btn.btn-success(onclick="createTodo()") Create
+                hr
+            .col
+
+                if todos.length !== 0
+                    h1 Incomplete (#{todos.length})
+                else
+                    h1 Incomplete
+
+
+                if todos.length === 0
+                    h3 You've completed all tasks! 👏👏
+
+                ul.list-group.todo-container
+                    each todo in todos
+                        button(onclick=`modifyTodo(${JSON.stringify(todo)})`).shadow-none.list-group-item.list-group-item-action.todo-check-icon
+                            | #{todo.content}
+                            span.far.fa-square.float-right
+
+            .col
+                if todosCompleted.length !== 0
+                    h1 Completed (#{todosCompleted.length})
+                else
+                    h1 Completed
+
+                if todosCompleted.length === 0 && todos.length !== 0
+                    h3 You haven't completed a single task.. Shame on you 🥴
+                ul.list-group.todo-container
+                    each todo in todosCompleted
+                        button(onclick=`modifyTodo(${JSON.stringify(todo)})`).list-group-item.list-group-item-action.todo-uncheck-icon
+                            | #{todo.content}
+                            span.far.fa-check-square.float-right
+
+
+
+

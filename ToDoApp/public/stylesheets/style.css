@@ -1,0 +1,27 @@
+.button:active,
+button:active,
+.button:focus,
+button:focus {
+    outline: none !important;
+}
+
+.todo-container {
+    height: 45vh;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+
+.change-icon .fa-check {
+    display: none;
+}
+
+
+.todo-check-icon:hover .fa-square:before {
+    content: "\f14a";
+}
+
+
+.todo-uncheck-icon:hover .fa-check-square:before {
+    content: "\f0c8";
+}
